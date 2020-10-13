@@ -1,4 +1,7 @@
 # Projet dev mobile: Bee ware
+Groupe 3 : Rémi Feydit, Olivier Verrier, Mathieu Caselles, Antoine Durand
+
+
 11/10/2020
 
 ## Mise en situation:
@@ -10,7 +13,7 @@ Le jeu sera lancé par l'utilisateur lorsqu'il souhaite passer le temps, se dive
 
 L'application se compose d'une page accueil, une page profil et d'une multitudes de pages d'énigmes:
 
-![arbre description](./arbre_description.png)
+![arbre description](./assets/arbre_description.png)
 
 - La page d'accueil est une liste des différentes énigmes. 
 - La page profil doit être accessible via tabs ou side menu.
@@ -73,15 +76,13 @@ On rajoutera d'autres énigmes en fonction du temps que nous prendront les premi
 
 ### *Techno utilisés*:
 
-- Ionic
+- Ionic (React, TypeScript)
 - Github
-- React
-- typeScript
 
 ### *Style*:
 L'application sera utilisable sur mobile.  
 Le logo de l'application sera une abeille:
-![arbre description](./logo.png)  
+![arbre description](./assets/logo.png)  
 Donc l'application suivra les couleurs de l'abeille, donc jaune avec le code hexadécimal `#ffb708` et noir avec le code `#1c1c1c`.
 
 ### *Contrainte*:
