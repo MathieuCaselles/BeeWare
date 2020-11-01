@@ -20,27 +20,27 @@ const Home: React.FC = () => {
                 <IonCol size="4" >
                   <IonCardHeader>
 
-                    <IonCardSubtitle>Pseudo</IonCardSubtitle>
                     <IonImg src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" />
+                    <IonCardSubtitle>Enigm 1</IonCardSubtitle>
                   </IonCardHeader>
                 </IonCol>
                 <IonCol>
                   <IonCardContent>
-                    <p>Temps totoal passé sur les épreuves: 0min</p>
-                    3/??
-              <     IonProgressBar type="indeterminate" />
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                    <i className='far fa-star' />
+                    <i className='far fa-star' />
                   </IonCardContent>
+                  <p>Blabla explicatif</p>
                 </IonCol>
 
               </IonRow>
+
             </IonGrid>
-
-
-
-
           </IonCard>
         </IonHeader>
-        <EnigmListings />
+        <p>Cette zone changera en fonction de l'énigme.</p>
       </IonContent>
     </IonPage>
   );
