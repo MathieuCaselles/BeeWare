@@ -1,6 +1,6 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonProgressBar, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import EnigmListings from '../components/EnigmListings';
+import RiddleListings from '../components/RiddleListings';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
                 </IonCol>
                 <IonCol>
                   <IonCardContent>
-                    <p>Temps totoal passé sur les épreuves: 0min</p>
+                    <p>Temps total passé sur les épreuves: 0min</p>
                     3/??
               <     IonProgressBar type="indeterminate" />
                   </IonCardContent>
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
 
           </IonCard>
         </IonHeader>
-        <EnigmListings />
+        <RiddleListings />
       </IonContent>
     </IonPage>
   );

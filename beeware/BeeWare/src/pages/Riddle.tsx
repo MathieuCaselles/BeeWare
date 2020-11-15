@@ -1,6 +1,6 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonProgressBar, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import EnigmListings from '../components/EnigmListings';
+import RiddleListings from '../components/RiddleListings';
 import './Home.css';
 
 const Home: React.FC = () => {
