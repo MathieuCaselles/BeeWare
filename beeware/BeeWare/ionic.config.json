@@ -1,7 +1,0 @@
-{
-  "name": "BeeWare",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}

@@ -9,7 +9,7 @@ import { RiddleComponent } from './Riddle'
 const RiddleListings: React.FC = () => {
 
     const data = riddles
-    
+
     const history = useHistory();
     const navigateToRiddle = () => {
         history.push({
@@ -22,9 +22,10 @@ const RiddleListings: React.FC = () => {
     return (
         <IonGrid>
             <IonRow>
-                <IonCol size-md="3" size="6">
-                    { data.map((riddle) => <RiddleComponent item={riddle} navigateToItem={navigateToRiddle}></RiddleComponent> ) }
-                </IonCol>
+                {data.map((riddle) =>
+                    <IonCol size="6" size-md="3" sizeLg="2">
+                        <RiddleComponent item={riddle} navigateToItem={navigateToRiddle} />
+                    </IonCol>)}
             </IonRow>
         </IonGrid>
     );
