@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import AppContext from './app-context';
 import { Riddle, defaultRiddles } from '../models/Riddle'
 import { Profile, defaultProfile } from '../models/Profile'
-import { Plugins } from '@capacitor/core'
+import { GeolocationPosition, Plugins } from '@capacitor/core'
 
 const { Storage } = Plugins;
 
@@ -33,6 +33,13 @@ const AppContextProvider: React.FC = (props) => {
         setProfile(updateProfile)
     }
 
+    const updatePosition = (updatedPosition: GeolocationPosition) => {
+        const oldProfile = profile
+        let newProfile = oldProfile
+        newProfile.position = updatedPosition
+        updateProfile(newProfile)
+    }
+
     const initContext = async () => {
         const profileData = await Storage.get({ key: 'profile' })
         const riddlesData = await Storage.get({ key: 'riddles' })
@@ -43,7 +50,7 @@ const AppContextProvider: React.FC = (props) => {
         setRiddles(storedRiddles)
     }
 
-    return <AppContext.Provider value={{ initContext, riddles, profile, updateProfile, updateRiddle }}>
+    return <AppContext.Provider value={{ initContext, riddles, profile, updateProfile, updateRiddle, updatePosition }}>
         {props.children}
     </AppContext.Provider>
 }

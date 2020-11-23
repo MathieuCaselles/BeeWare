@@ -1,45 +1,33 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
+import {
+  IonBackButton,
+  IonButtons,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
+import React, { useContext } from 'react';
+import { useParams } from 'react-router';
+import AppContext from '../data/app-context';
 
 const Riddle: React.FC = () => {
+  const appCtx = useContext(AppContext);
+
+  const id = useParams<{ id: string }>().id;
+  const riddle = appCtx.riddles.find((riddle) => riddle.id === id);
+  const Component = riddle?.component;
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar >
+      <IonHeader collapse="condense">
+        <IonToolbar color={'primary'}>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="" text="Back" />
+          </IonButtons>
           <IonTitle>Beeware</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonCard>
-
-            <IonGrid>
-              <IonRow>
-                <IonCol size="4" >
-                  <IonCardHeader>
-
-                    <IonImg src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" />
-                    <IonCardSubtitle>Enigm 1</IonCardSubtitle>
-                  </IonCardHeader>
-                </IonCol>
-                <IonCol>
-                  <IonCardContent>
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                    <i className='far fa-star' />
-                    <i className='far fa-star' />
-                  </IonCardContent>
-                  <p>Blabla explicatif</p>
-                </IonCol>
-
-              </IonRow>
-
-            </IonGrid>
-          </IonCard>
-        </IonHeader>
-        <p>Cette zone changera en fonction de l'énigme.</p>
-      </IonContent>
+      {Component && riddle ? <Component riddle={riddle} /> : 'Rien ici'}
     </IonPage>
   );
 };

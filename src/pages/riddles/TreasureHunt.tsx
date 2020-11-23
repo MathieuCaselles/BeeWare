@@ -2,12 +2,13 @@ import { Geolocation } from '@capacitor/core/dist/esm/web/geolocation';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import AppContext from '../data/app-context';
+import AppContext from '../../data/app-context';
 
 const TreasureHunt: React.FC = () => {
 
   const history = useHistory();
   const appCtx = useContext(AppContext);
+  const userPosition = appCtx.profile.position;
 
   const navigateToHome= () => {
       history.push({
@@ -18,14 +19,10 @@ const TreasureHunt: React.FC = () => {
 
   const getLocation = async() => {
     try {
-        let position = await Geolocation.getCurrentPosition();
-        const currentPosition = { ...appCtx.position }
-        currentPosition.latitude = position.coords.latitude;
-        currentPosition.longitude = position.coords.longitude;
-        appCtx.updatePosition(currentPosition)
-        
+      let currentPosition = await Geolocation.getCurrentPosition();
+      appCtx.updatePosition(currentPosition)
     } catch (error) {
-
+      console.log(error)
     }
   }
   getLocation();
@@ -67,8 +64,9 @@ const TreasureHunt: React.FC = () => {
             </IonGrid>
           </IonCard>
         </IonHeader>
-
         <p>Cette zone changera en fonction de l'énigme. Chasse au trésor</p>
+        <p>{ userPosition.coords.latitude }</p>
+        <p>{ userPosition.coords.longitude }</p>
       </IonContent>
     </IonPage>
   );
