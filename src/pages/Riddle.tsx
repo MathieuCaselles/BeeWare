@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 import RiddleListings from '../components/RiddleListings';
 import './Home.css';
@@ -8,13 +8,15 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar >
+        <IonButtons slot="start">
+          <IonBackButton defaultHref="home" text="Back"/>
+        </IonButtons>
           <IonTitle>Beeware</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonCard>
-
             <IonGrid>
               <IonRow>
                 <IonCol size="4" >

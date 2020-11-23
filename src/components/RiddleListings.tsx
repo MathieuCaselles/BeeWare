@@ -2,6 +2,7 @@ import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import { riddles } from '../data/Riddles';
+import { Riddle } from '../models/Riddle';
 import { RiddleComponent } from './Riddle'
 
 
@@ -22,7 +23,7 @@ const RiddleListings: React.FC = () => {
     return (
         <IonGrid>
             <IonRow>
-                {data.map((riddle) =>
+                {data.map((riddle: Riddle) =>
                     <IonCol size="6" size-md="3" sizeLg="2">
                         <RiddleComponent item={riddle} navigateToItem={navigateToRiddle} />
                     </IonCol>)}
