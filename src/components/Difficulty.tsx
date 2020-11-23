@@ -1,4 +1,4 @@
-import { IonCol, IonGrid, IonIcon, IonItem, IonList, IonRow } from "@ionic/react"
+import { IonCol, IonGrid, IonIcon, IonRow } from "@ionic/react"
 import React from "react"
 import { star, starOutline } from 'ionicons/icons'
 
