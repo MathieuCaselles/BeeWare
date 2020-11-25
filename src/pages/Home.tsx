@@ -22,7 +22,7 @@ const Home: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                <IonCard onClick={navigateToUser}>
+                <IonCard onClick={navigateToUser} button={true}>
                     <IonGrid>
                         <IonRow>
                             <IonCol size="4">
