@@ -4,7 +4,8 @@ export interface Riddle {
     name: string,
     difficulty: number,
     timeSec: 0,
-    isSuccess: boolean
+    isSuccess: boolean,
+    path: string
 }
 
 export const defaultRiddles: Riddle[] = [
@@ -15,6 +16,7 @@ export const defaultRiddles: Riddle[] = [
         difficulty: 3,
         timeSec: 0,
         isSuccess: true,
+        path: ""
     },
     {
         id: '2',
@@ -23,6 +25,7 @@ export const defaultRiddles: Riddle[] = [
         difficulty: 1,
         timeSec: 0,
         isSuccess: false,
+        path: ""
     },
     {
         id: '3',
@@ -31,5 +34,6 @@ export const defaultRiddles: Riddle[] = [
         difficulty: 2,
         timeSec: 0,
         isSuccess: false,
+        path: ""
     }
 ]

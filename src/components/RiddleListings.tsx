@@ -12,9 +12,9 @@ const RiddleListings: React.FC = () => {
     const appCtx = useContext(AppContext);
 
     const history = useHistory();
-    const navigateToRiddle = () => {
+    const navigateToRiddle = (path: string) => {
         history.push({
-            pathname: `/riddle`,
+            pathname: path,
         });
         history.go(0)
     }
@@ -25,7 +25,7 @@ const RiddleListings: React.FC = () => {
             <IonRow>
                 {appCtx.riddles.map((riddle: Riddle) =>
                     <IonCol size="6" size-md="3" sizeLg="2">
-                        <RiddleComponent item={riddle} navigateToItem={navigateToRiddle} />
+                        <RiddleComponent item={riddle} navigateToItem={() => navigateToRiddle(riddle.path)} />
                     </IonCol>)}
             </IonRow>
         </IonGrid>
