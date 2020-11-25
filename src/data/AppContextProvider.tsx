@@ -22,23 +22,6 @@ const AppContextProvider: React.FC = (props) => {
         }
     }, [profile, riddles])
 
-    const addRiddle = (newRiddle: Riddle) => {
-        setRiddles((prevState) => {
-            let newList = [...prevState];
-            newList.unshift(newRiddle)
-            return newList
-        })
-    }
-
-    const deleteRiddle = (id: string) => {
-        const index = riddles.map(el => el.id).indexOf(id)
-        setRiddles((prevState) => {
-            let newList = [...prevState];
-            newList.splice(index, 1)
-            return newList
-        })
-    }
-
     const updateRiddle = (updateRiddle: Riddle) => {
         const index = riddles.map(el => el.id).indexOf(updateRiddle.id)
         setRiddles((prevState) => {
@@ -49,7 +32,6 @@ const AppContextProvider: React.FC = (props) => {
     }
 
     const updateProfile = (updateProfile: Profile) => {
-        console.log("dhqeidehuidehui")
         setProfile(updateProfile)
     }
 
@@ -63,7 +45,7 @@ const AppContextProvider: React.FC = (props) => {
         setRiddles(storedRiddles)
     }
 
-    return <AppContext.Provider value={{ initContext, riddles, profile, updateProfile, addRiddle, deleteRiddle, updateRiddle }}>
+    return <AppContext.Provider value={{ initContext, riddles, profile, updateProfile, updateRiddle }}>
         {props.children}
     </AppContext.Provider>
 }

@@ -21,7 +21,7 @@ const User: React.FC = () => {
             <IonCol size="12">
               <IonCardHeader >
                 <IonImg src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" />
-                <IonCardTitle>Pseudo</IonCardTitle>
+                <IonCardTitle>{appCtx.profile.username}</IonCardTitle>
               </IonCardHeader>
             </IonCol>
           </IonRow>
