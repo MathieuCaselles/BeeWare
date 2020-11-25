@@ -18,7 +18,7 @@ const RiddleComponent: React.FC<{ item: Riddle, navigateToItem: () => void }> = 
                 <IonCardSubtitle>
                     <DifficultyComponent riddleDifficulty={props.item.difficulty} />
                 </IonCardSubtitle>
-                <IonCardSubtitle>{props.item.time} sec</IonCardSubtitle>
+                <IonCardSubtitle>{props.item.timeSec} sec</IonCardSubtitle>
             </IonCardContent>
         </IonCard>
     )
