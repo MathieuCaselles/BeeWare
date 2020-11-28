@@ -4,21 +4,21 @@ import { Riddle } from "../models/Riddle"
 import DifficultyComponent from "./Difficulty"
 
 
-const RiddleComponent: React.FC<{ item: Riddle, navigateToItem: () => void }> = (props) => {
+const RiddleComponent: React.FC<{ riddle: Riddle }> = (props) => {
 
 
     return (
-        <IonCard button={true} color={props.item.isSuccess ? 'primary' : 'secondary'} onClick={() => props.navigateToItem()}>
+        <IonCard button={true} color={props.riddle.isSuccess ? 'primary' : 'secondary'} routerLink={`${props.riddle.path}/${props.riddle.id}`}>
             <IonCardHeader>
-                <IonImg src={props.item.image} />
-                <IonCardSubtitle>{props.item.name}</IonCardSubtitle>
+                <IonImg src={props.riddle.image} />
+                <IonCardSubtitle>{props.riddle.name}</IonCardSubtitle>
             </IonCardHeader>
 
             <IonCardContent>
                 <IonCardSubtitle>
-                    <DifficultyComponent riddleDifficulty={props.item.difficulty} />
+                    <DifficultyComponent riddleDifficulty={props.riddle.difficulty} />
                 </IonCardSubtitle>
-                <IonCardSubtitle>{props.item.timeSec} sec</IonCardSubtitle>
+                <IonCardSubtitle>{props.riddle.timeSec} sec</IonCardSubtitle>
             </IonCardContent>
         </IonCard>
     )
