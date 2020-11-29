@@ -12,9 +12,7 @@ const AppContextProvider: React.FC = (props) => {
     const didMountRef = useRef(false);
 
     useEffect(() => {
-        console.log('remipd')
         if (didMountRef.current) {
-            console.log(profile)
             Storage.set({ key: 'profile', value: JSON.stringify(profile) })
             Storage.set({ key: 'riddles', value: JSON.stringify(riddles) })
         } else {

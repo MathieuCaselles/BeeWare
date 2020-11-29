@@ -3,7 +3,7 @@ export interface Riddle {
     image: string,
     name: string,
     difficulty: number,
-    timeSec: 0,
+    timeSec: number,
     isSuccess: boolean,
     path: string
 }
@@ -29,11 +29,11 @@ export const defaultRiddles: Riddle[] = [
     },
     {
         id: '3',
-        image: "http://www.notreloft.com/images/2014/05/Renovation-appartement-haussmannien-0100.jpg",
-        name: "Riddle 3",
-        difficulty: 2,
-        timeSec: 0,
+        image: "https://blog.malwarebytes.com/wp-content/uploads/2013/11/photodune-5172276-locked-smartphone-m.jpg",
+        name: "Code Lock",
+        difficulty: 1,
+        timeSec: 1,
         isSuccess: false,
-        path: ""
+        path: "/codeLock"
     }
 ]

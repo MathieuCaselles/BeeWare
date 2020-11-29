@@ -30,7 +30,7 @@ const User: React.FC = () => {
           <IonGrid>
             {
               appCtx.riddles.map((riddle: Riddle) => (
-                <IonRow>
+                <IonRow key={riddle.id}>
                   <IonCol>
                     <IonItem color={riddle.isSuccess ? "primary" : "secondary"}>
                       <IonLabel>
