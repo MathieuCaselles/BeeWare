@@ -7,10 +7,10 @@ const DifficultyComponent: React.FC<{ riddleDifficulty: number }> = (props) => {
     for (let i = 0; i < props.riddleDifficulty; i++) {
         difficultyStars.push(
 
-            <IonCol size="2"><IonIcon icon={star} /></IonCol>)
+            <IonCol size="2" key={i + 'star'}><IonIcon icon={star} /></IonCol>)
     }
     for (let i = 0; i < 5 - props.riddleDifficulty; i++) {
-        difficultyStars.push(<IonCol size="2"><IonIcon icon={starOutline} /></IonCol>)
+        difficultyStars.push(<IonCol size="2" key={i + 'starOutline'}><IonIcon icon={starOutline} /></IonCol>)
     }
 
     return (
