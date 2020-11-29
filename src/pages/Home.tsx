@@ -1,5 +1,6 @@
+import { Filesystem, FilesystemDirectory } from '@capacitor/core';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonProgressBar, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RiddleListings from '../components/RiddleListings';
 import AppContext from '../data/app-context';
@@ -17,10 +18,21 @@ const Home: React.FC = () => {
     }
     const appCtx = useContext(AppContext);
     let timeRiddle = 0
+    const [profileBase64, setProfileBase64] = useState<string>();
+    
+    const updateBase64 = async () => {
+        if (!appCtx.profile.picture) return
+        const file = await Filesystem.readFile({
+            path: appCtx.profile.picture,
+            directory: FilesystemDirectory.Data
+        })
+        setProfileBase64('data:image/jpeg;base64,' + file.data)
+    }
 
     useEffect(() => {
         appCtx.initContext();
-    }, [])
+        updateBase64()
+    }, [appCtx.profile.picture])
 
     appCtx.riddles.map((riddle: Riddle) => {
         timeRiddle += riddle.timeSec 
@@ -40,7 +52,7 @@ const Home: React.FC = () => {
                             <IonCol size="4">
                                 <IonCardHeader>
                                     <IonCardSubtitle>{appCtx.profile.username}</IonCardSubtitle>
-                                    <IonImg src={appCtx.profile.picture ? appCtx.profile.picture : 'https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png'} />
+                                    <IonImg src={profileBase64 ? profileBase64 : 'https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png'} />
                                 </IonCardHeader>
                             </IonCol>
                             <IonCol>
