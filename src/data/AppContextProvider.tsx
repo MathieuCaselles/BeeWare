@@ -12,9 +12,7 @@ const AppContextProvider: React.FC = (props) => {
     const didMountRef = useRef(false);
 
     useEffect(() => {
-        console.log("remipd")
         if (didMountRef.current) {
-            console.log(profile)
             Storage.set({ key: 'profile', value: JSON.stringify(profile) })
             Storage.set({ key: 'riddles', value: JSON.stringify(riddles) })
         } else {
@@ -40,7 +38,6 @@ const AppContextProvider: React.FC = (props) => {
         const riddlesData = await Storage.get({ key: 'riddles' })
         const storedProfile = profileData.value ? JSON.parse(profileData.value) : defaultProfile;
         const storedRiddles = riddlesData.value ? JSON.parse(riddlesData.value) : defaultRiddles;
-        console.log("sex")
         didMountRef.current = false;
         setProfile(storedProfile)
         setRiddles(storedRiddles)

@@ -20,7 +20,6 @@ const Home: React.FC = () => {
         updateRiddle.isSuccess = true;
         updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
         appCtx.updateRiddle(updateRiddle);
-        console.log('sah quel plaisir')
     }
 
     return (
@@ -39,14 +38,14 @@ const Home: React.FC = () => {
                         <IonRow className="ion-justify-content-center">
                             <IonCol>
                                 <IonCardHeader>
-                                    <IonTitle>Code Lock</IonTitle>
+                                    <IonTitle>{riddle!.name}</IonTitle>
                                 </IonCardHeader>
                             </IonCol>
                         </IonRow>
                         <IonRow className="ion-justify-content-center">
                             <IonCol>
                                 <IonCardHeader>
-                                    <IonImg src="https://blog.malwarebytes.com/wp-content/uploads/2013/11/photodune-5172276-locked-smartphone-m.jpg" />
+                                    <IonImg src={riddle!.image} />
                                 </IonCardHeader>
                             </IonCol>
                         </IonRow>
