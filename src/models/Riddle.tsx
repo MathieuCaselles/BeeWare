@@ -12,7 +12,7 @@ export const defaultRiddles: Riddle[] = [
     {
         id: '1',
         image: "https://jojo-app.fr/wp-content/uploads/2018/09/espace-optimise-appartement-meuble-paris.jpg",
-        name: "Riddle 1",
+        name: "riddle-1",
         difficulty: 3,
         timeSec: 0,
         isSuccess: true,
@@ -21,7 +21,7 @@ export const defaultRiddles: Riddle[] = [
     {
         id: '2',
         image: "http://goraguer.fr/wp/wp-content/uploads/2012/06/Appartement-marais-5.jpg",
-        name: "Riddle 2",
+        name: "riddle-2",
         difficulty: 1,
         timeSec: 0,
         isSuccess: false,
@@ -35,5 +35,15 @@ export const defaultRiddles: Riddle[] = [
         timeSec: 1,
         isSuccess: false,
         path: "/codeLock"
+    },
+    {
+        id: '4',
+        image: "https://www.thespruce.com/thmb/d97ouPVGIw0T655cMAhEVeWeLM4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/indoor-treasure-hunt-for-children-1695332_FINAL-a9fabbdd08a14bfcbf9acb8ecae3a2f3.png",
+        name: "treasure-hunt",
+        difficulty: 1,
+        timeSec: 0,
+        isSuccess: false,
+        path: ""
     }
+
 ]

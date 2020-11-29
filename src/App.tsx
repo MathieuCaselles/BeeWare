@@ -41,6 +41,7 @@ const App: React.FC = () => {
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route path="/user" component={User} exact={true} />
           <Route exact path={`/codeLock/:id`} component={codeLock} />
+          <Route path="/riddle/treasure-hunt" component={TreasureHunt} exact={true} />
 
         </IonRouterOutlet>
       </IonReactRouter>
