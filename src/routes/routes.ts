@@ -8,9 +8,14 @@ const Home: Route = {
   name: 'home'
 }
 
-const Enigm: Route = {
-  path: '/enigm',
-  name: 'enigm'
+const Riddle: Route = {
+  path: '/riddle',
+  name: 'riddle'
 }
 
-export { Home, Enigm }
+const RiddleGPS: Route = {
+  path: '/riddle/gps',
+  name: 'treasure-hunt'
+}
+
+export { Home, Riddle }
