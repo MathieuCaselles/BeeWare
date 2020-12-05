@@ -1,21 +1,16 @@
 import {
-  IonBackButton,
   IonButton,
-  IonButtons,
   IonCard,
   IonCardHeader,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonImg,
   IonInput,
   IonItem,
   IonList,
-  IonPage,
   IonRow,
   IonTitle,
-  IonToolbar,
 } from '@ionic/react';
 import React, { useContext, useState } from 'react';
 import AppContext from '../../data/app-context';

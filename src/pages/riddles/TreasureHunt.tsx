@@ -1,74 +1,103 @@
 import { Geolocation } from '@capacitor/core/dist/esm/web/geolocation';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import {
+  IonButton,
+  IonCard,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonIcon,
+  IonLabel,
+  IonRow,
+} from '@ionic/react';
+import { save } from 'ionicons/icons';
+import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../../data/app-context';
+import { checkCode } from '../../utils/utils';
 
 const TreasureHunt: React.FC = () => {
-
-  const history = useHistory();
-  const appCtx = useContext(AppContext);
-  const userPosition = appCtx.profile.position;
-
-  const navigateToHome= () => {
-      history.push({
-          pathname: `/home`,
-      });
-      history.go(0)
-  }
-
-  const getLocation = async() => {
+  const getLocation = async () => {
     try {
-      let currentPosition = await Geolocation.getCurrentPosition();
-      appCtx.updatePosition(currentPosition)
+      position = await Geolocation.getCurrentPosition();
+      console.log('position: ', position);
+      const currentPosition = position;
+      appCtx.updatePosition(currentPosition);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+
+  // const successfulRiddle = () => {
+  //   if (!props.riddle || !checkCode('LockSucceSS', inputCode)) return;
+  //   let updateRiddle = { ...props.riddle };
+  //   updateRiddle.isSuccess = true;
+  //   updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
+  //   appCtx.updateRiddle(updateRiddle);
+  // };
+
+  const appCtx = useContext(AppContext);
+  let position;
+
   getLocation();
 
-  
+  const timeStart = new Date();
+  const [inputCode, setInputCode] = useState('');
+
+  let userPosition = appCtx.profile.position;
+  const startPosition = appCtx.profile.position;
+
+  console.log('userPosition: ', userPosition);
+
+  useEffect(() => {
+    userPosition.coords = appCtx.profile.position.coords;
+  }, [position]);
+
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar >
-          <IonTitle onClick={() => navigateToHome()}>Beeware</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
+    <IonContent fullscreen>
+      <IonGrid>
+        <IonRow>
           <IonCard>
-
-            <IonGrid>
-              <IonRow>
-                <IonCol size="4" >
-                  <IonCardHeader>
-
-                    <IonImg src="https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png" />
-                    <IonCardSubtitle>Enigm 1</IonCardSubtitle>
-                  </IonCardHeader>
-                </IonCol>
-                <IonCol>
-                  <IonCardContent>
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                    <i className='far fa-star' />
-                    <i className='far fa-star' />
-                  </IonCardContent>
-                  <p>Blabla explicatif</p>
-                </IonCol>
-
-              </IonRow>
-
-            </IonGrid>
+            <p>Cette zone changera en fonction de l'énigme. Chasse au trésor</p>
           </IonCard>
-        </IonHeader>
-        <p>Cette zone changera en fonction de l'énigme. Chasse au trésor</p>
-        <p>{ userPosition.coords.latitude }</p>
-        <p>{ userPosition.coords.longitude }</p>
-      </IonContent>
-    </IonPage>
+        </IonRow>
+        <IonRow>
+          <IonCol>
+            <IonCard>
+              <p>Position de départ :</p>
+              {startPosition.coords ? (
+                <p>
+                  {startPosition.coords.latitude} -{' '}
+                  {startPosition.coords.longitude}
+                </p>
+              ) : (
+                <p>Pas de coordonnées</p>
+              )}
+            </IonCard>
+          </IonCol>
+
+          <IonCol>
+            <IonCard>
+              <p>Position actuelle :</p>
+              {userPosition.coords ? (
+                <p>
+                  {userPosition.coords.latitude} -{' '}
+                  {userPosition.coords.longitude}
+                </p>
+              ) : (
+                <p>Pas de coordonnées</p>
+              )}
+            </IonCard>
+          </IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol size="1" offset="4">
+            <IonButton mode="ios" fill="outline" onClick={() => getLocation()}>
+              <IonIcon icon={save} />
+              <IonLabel>getLocation</IonLabel>
+            </IonButton>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+    </IonContent>
   );
 };
 
