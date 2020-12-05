@@ -8,6 +8,7 @@ import {
   IonImg,
   IonInput,
   IonItem,
+  IonLabel,
   IonList,
   IonRow,
   IonTitle,
@@ -16,12 +17,27 @@ import React, { useContext, useState } from 'react';
 import AppContext from '../../data/app-context';
 import { Riddle } from '../../models/Riddle';
 import { checkCode } from '../../utils/utils';
+import { Plugins, AppState } from '@capacitor/core';
+import { useHistory } from "react-router-dom";
+const { App } = Plugins;
 
-const CodeLock: React.FC<{ riddle: Riddle }> = (props) => {
+
+
+const Background: React.FC<{ riddle: Riddle }> = (props) => {
   const appCtx = useContext(AppContext);
-
-  const timeStart = new Date();
+  const history = useHistory();
+  const [timeStart] = useState(new Date())
   const [inputCode, setInputCode] = useState('');
+  const [isUp, setIsUp] = useState(false);
+  const [win, setWin] = useState(false)
+
+  if (!isUp) {
+    setIsUp(true);
+    App.addListener('appStateChange', (state: AppState) => {
+      if (!state.isActive)
+        setWin(true)
+    });
+  }
 
   const successfulRiddle = () => {
     if (!props.riddle || !checkCode('LockSucceSS', inputCode)) return;
@@ -29,6 +45,7 @@ const CodeLock: React.FC<{ riddle: Riddle }> = (props) => {
     updateRiddle.isSuccess = true;
     updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
     appCtx.updateRiddle(updateRiddle);
+    history.replace("/")
   };
 
   return (
@@ -68,8 +85,16 @@ const CodeLock: React.FC<{ riddle: Riddle }> = (props) => {
           </IonRow>
         </IonGrid>
       </IonCard>
+      {win &&
+        <IonItem color="primary">
+          <IonLabel className="ion-text-center">
+            Le code est: LockSucceSS
+        </IonLabel>
+        </IonItem>
+      }
+
     </IonContent>
   );
 };
 
-export default CodeLock;
+export default Background;

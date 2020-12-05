@@ -22,7 +22,7 @@ const Riddle: React.FC = () => {
       <IonHeader collapse="condense">
         <IonToolbar color={'primary'}>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="" text="Back" />
+            <IonBackButton defaultHref="/" text="Back" />
           </IonButtons>
           <IonTitle>Beeware</IonTitle>
         </IonToolbar>

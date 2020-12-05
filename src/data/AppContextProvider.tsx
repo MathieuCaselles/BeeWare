@@ -13,6 +13,7 @@ const AppContextProvider: React.FC = (props) => {
 
   useEffect(() => {
     if (didMountRef.current) {
+
       Storage.set({ key: 'profile', value: JSON.stringify(profile) });
       Storage.set({ key: 'riddles', value: JSON.stringify(riddles) });
     } else {
@@ -42,6 +43,7 @@ const AppContextProvider: React.FC = (props) => {
   };
 
   const initContext = async () => {
+    console.log("dezd")
     const profileData = await Storage.get({ key: 'profile' });
     const riddlesData = await Storage.get({ key: 'riddles' });
     const storedProfile = profileData.value
