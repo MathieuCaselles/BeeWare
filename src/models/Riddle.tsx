@@ -12,11 +12,11 @@ export const defaultRiddles: Riddle[] = [
     {
         id: '1',
         image: "https://jojo-app.fr/wp-content/uploads/2018/09/espace-optimise-appartement-meuble-paris.jpg",
-        name: "Riddle 1",
+        name: "Contact Riddle",
         difficulty: 3,
         timeSec: 0,
         isSuccess: true,
-        path: ""
+        path: "/ContactRiddle"
     },
     {
         id: '2',

@@ -8,9 +8,4 @@ const Home: Route = {
   name: 'home'
 }
 
-const Enigm: Route = {
-  path: '/enigm',
-  name: 'enigm'
-}
-
-export { Home, Enigm }
+export { Home }
