@@ -50,35 +50,41 @@ const Clipboard: React.FC<{ riddle: Riddle }> = (props) => {
     };
 
     return (
-            <IonContent>
-                <IonCard>
-                    <IonGrid>
-                        <IonRow className="ion-justify-content-center">
-                            <IonCol>
-                                <IonCardHeader>
-                                    <IonTitle>{riddle!.name}</IonTitle>
-                                </IonCardHeader>
-                            </IonCol>
-                        </IonRow>
-                            <IonCol>
-                                <IonIcon style={iconStyle} icon={copyOutline}></IonIcon>
-                            </IonCol>
-                            <IonCol offset="7">
-                                <IonIcon style={iconStyle} icon={printOutline}></IonIcon>
-                            </IonCol>
-                        <IonRow className="ion-justify-content-center">
-                            <IonCol>
-                                <IonList>
-                                    <IonItem>
-                                        <IonInput onClick={addClipboardText} className="ion-text-center" onIonChange={event => setInputCode(event.detail.value || '')}></IonInput>
-                                        <IonButton color="primary" onClick={successfulRiddle}>Valider</IonButton>
-                                    </IonItem>
-                                </IonList>
-                            </IonCol>
-                        </IonRow>
-                    </IonGrid>
-                </IonCard>
-            </IonContent>
+        <IonContent>
+        <IonGrid>
+            <IonRow className="ion-justify-content-center">
+                <IonCol sizeMd="5">
+                    <IonCard>
+                        <IonGrid>
+                            <IonRow className="ion-justify-content-center">
+                                <IonCol>
+                                    <IonCardHeader>
+                                        <IonTitle>{riddle!.name}</IonTitle>
+                                    </IonCardHeader>
+                                </IonCol>
+                            </IonRow>
+                                <IonCol>
+                                    <IonIcon style={iconStyle} icon={copyOutline}></IonIcon>
+                                </IonCol>
+                                <IonCol offset="7">
+                                    <IonIcon style={iconStyle} icon={printOutline}></IonIcon>
+                                </IonCol>
+                            <IonRow className="ion-justify-content-center">
+                                <IonCol>
+                                    <IonList>
+                                        <IonItem>
+                                            <IonInput onClick={addClipboardText} className="ion-text-center" onIonChange={event => setInputCode(event.detail.value || '')}></IonInput>
+                                            <IonButton color="primary" onClick={successfulRiddle}>Valider</IonButton>
+                                        </IonItem>
+                                    </IonList>
+                                </IonCol>
+                            </IonRow>
+                        </IonGrid>
+                    </IonCard>
+                </IonCol>
+            </IonRow>
+        </IonGrid>
+    </IonContent>
     );
 };
 
