@@ -16,11 +16,11 @@ export const defaultRiddles: Riddle[] = [
   {
     id: '1',
     image:
-      'https://jojo-app.fr/wp-content/uploads/2018/09/espace-optimise-appartement-meuble-paris.jpg',
+      'https://cdn.discordapp.com/attachments/778266281107259402/785263111451312198/unknown.png',
     name: 'Contact riddle',
-    difficulty: 3,
+    difficulty: 1,
     timeSec: 0,
-    isSuccess: true,
+    isSuccess: false,
     component: ContactRiddle,
   },
   {
