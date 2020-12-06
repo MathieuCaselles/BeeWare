@@ -16,12 +16,12 @@ const Riddle: React.FC = () => {
   const Component = riddleWithCompnent?.component;
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-text-center">
         <IonToolbar color={'primary'}>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" text="Back" />
           </IonButtons>
-          <IonTitle className="ion-text-center">
+          <IonTitle>
             Beeware
           </IonTitle>
         </IonToolbar>

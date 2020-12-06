@@ -90,10 +90,11 @@ const User: React.FC = () => {
             </IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonCard>
-          <IonGrid>
-            <IonRow>
-              <IonCol size="12">
+
+        <IonGrid>
+          <IonRow className="ion-justify-content-center">
+            <IonCol sizeMd="3">
+              <IonCard>
                 <IonCardHeader>
                   <IonImg
                     src={
@@ -103,30 +104,32 @@ const User: React.FC = () => {
                     }
                     onClick={takePhotoHandler}
                   />
-                  <IonCardTitle onClick={() => setShowAlert(true)}>
+                  <IonCardTitle onClick={() => setShowAlert(true)} className="ion-text-center"
+                  >
                     {appCtx.profile.username}
                   </IonCardTitle>
                 </IonCardHeader>
-              </IonCol>
-            </IonRow>
-          </IonGrid>
-          <IonCardContent>
-            <IonGrid>
-              {appCtx.riddles.map((riddle: Riddle) => (
-                <IonRow key={riddle.id}>
-                  <IonCol>
-                    <IonItem color={riddle.isSuccess ? 'primary' : 'secondary'}>
-                      <IonLabel>
-                        {riddle.name} : {riddle.timeSec} seconds
+                <IonCardContent>
+                  <IonGrid>
+                    {appCtx.riddles.map((riddle: Riddle) => (
+                      <IonRow key={riddle.id}>
+                        <IonCol>
+                          <IonItem color={riddle.isSuccess ? 'primary' : 'secondary'}>
+                            <IonLabel>
+                              {riddle.name} : {riddle.timeSec} seconds
                       </IonLabel>
-                    </IonItem>
-                  </IonCol>
-                </IonRow>
-              ))}
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
+                          </IonItem>
+                        </IonCol>
+                      </IonRow>
+                    ))}
+                  </IonGrid>
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
+
       <IonAlert
         isOpen={showAlert}
         onDidDismiss={() => setShowAlert(false)}

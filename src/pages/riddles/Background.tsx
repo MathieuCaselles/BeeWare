@@ -51,41 +51,47 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
 
   return (
     <IonContent>
-      <IonCard>
-        <IonGrid>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonCardHeader>
-                <IonTitle>{props.riddle!.name}</IonTitle>
-              </IonCardHeader>
-            </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonCardHeader>
-                <IonImg src={props.riddle!.image} />
-              </IonCardHeader>
-            </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonList>
-                <IonItem>
-                  <IonInput
-                    className="ion-text-center"
-                    onIonChange={(event) =>
-                      setInputCode(event.detail.value || '')
-                    }
-                  ></IonInput>
-                  <IonButton color="primary" onClick={successfulRiddle}>
-                    Valider
+      <IonGrid>
+        <IonRow className="ion-justify-content-center">
+          <IonCol sizeMd="5">
+            <IonCard>
+              <IonGrid>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonCardHeader>
+                      <IonTitle>{props.riddle!.name}</IonTitle>
+                    </IonCardHeader>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonCardHeader>
+                      <IonImg src={props.riddle!.image} />
+                    </IonCardHeader>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonList>
+                      <IonItem>
+                        <IonInput
+                          className="ion-text-center"
+                          onIonChange={(event) =>
+                            setInputCode(event.detail.value || '')
+                          }
+                        ></IonInput>
+                        <IonButton color="primary" onClick={successfulRiddle}>
+                          Valider
                   </IonButton>
-                </IonItem>
-              </IonList>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </IonCard>
+                      </IonItem>
+                    </IonList>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
+            </IonCard>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
       {win &&
         <IonItem color="primary">
           <IonLabel className="ion-text-center">
