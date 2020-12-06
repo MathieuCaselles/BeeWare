@@ -68,7 +68,6 @@ const TreasureHunt: React.FC = () => {
           <IonCol>
             <IonCard>
               <p>Position actuelle :</p>
-
             </IonCard>
           </IonCol>
         </IonRow>

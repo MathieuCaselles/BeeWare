@@ -7,6 +7,7 @@ import User from './components/User';
 import AppContext from './data/app-context';
 import Riddle from './pages/Riddle';
 
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -27,7 +28,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
-  const appCtx = useContext(AppContext);
+
+const appCtx = useContext(AppContext);
 
   useEffect(() => {
     appCtx.initContext();

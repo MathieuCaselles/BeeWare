@@ -2,6 +2,7 @@ import Background from '../pages/riddles/Background';
 import TreasureHunt from '../pages/riddles/TreasureHunt';
 import Clipboard from '../pages/riddles/clipboard';
 import Light from '../pages/riddles/Light';
+import ContactRiddle from '../pages/riddles/ContactRiddle';
 
 export interface Riddle {
   id: string;
@@ -16,12 +17,13 @@ export interface Riddle {
 export const defaultRiddles: Riddle[] = [
   {
     id: '1',
-    image: 'https://cdn.pixabay.com/photo/2014/04/02/16/16/glue-306757_960_720.png',
-    name: 'riddle-1',
-    difficulty: 3,
+    image:
+      'https://cdn.discordapp.com/attachments/778266281107259402/785263111451312198/unknown.png',
+    name: 'Contact riddle',
+    difficulty: 1,
     timeSec: 0,
     isSuccess: false,
-    component: null,
+    component: ContactRiddle,
   },
   {
     id: '2',
