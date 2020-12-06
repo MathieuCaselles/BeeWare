@@ -20,7 +20,6 @@ const TreasureHunt: React.FC = () => {
       position = await Geolocation.getCurrentPosition();
       console.log('position: ', position);
       const currentPosition = position;
-      // appCtx.updatePosition(currentPosition);
     } catch (error) {
       console.log(error);
     }
@@ -42,15 +41,15 @@ const TreasureHunt: React.FC = () => {
   const timeStart = new Date();
   const [inputCode, setInputCode] = useState('');
 
-  // let userPosition = appCtx.profile.position;
-  // const startPosition = appCtx.profile.position;
+  let userPosition = 0;
+  const startPosition = 0;
 
-  // console.log('userPosition: ', userPosition);
-
-  // useEffect(() => {
-  //   userPosition.coords = appCtx.profile.position.coords;
-  // }, [position]);
-
+  console.log('userPosition: ', userPosition);
+  /*
+    useEffect(() => {
+      userPosition.coords = appCtx.profile.position.coords;
+    }, [position]);
+  */
   return (
     <IonContent fullscreen>
       <IonGrid>
@@ -63,28 +62,12 @@ const TreasureHunt: React.FC = () => {
           <IonCol>
             <IonCard>
               <p>Position de départ :</p>
-              {/* {startPosition.coords ? (
-                <p>
-                  {startPosition.coords.latitude} -{' '}
-                  {startPosition.coords.longitude}
-                </p>
-              ) : (
-                <p>Pas de coordonnées</p>
-              )} */}
             </IonCard>
           </IonCol>
 
           <IonCol>
             <IonCard>
               <p>Position actuelle :</p>
-              {/* {userPosition.coords ? (
-                <p>
-                  {userPosition.coords.latitude} -{' '}
-                  {userPosition.coords.longitude}
-                </p>
-              ) : (
-                <p>Pas de coordonnées</p>
-              )} */}
             </IonCard>
           </IonCol>
         </IonRow>
