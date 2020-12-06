@@ -6,28 +6,25 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
-import AppContext from '../data/app-context';
+import { defaultRiddles } from '../models/Riddle';
 
 const Riddle: React.FC = () => {
-  const appCtx = useContext(AppContext);
-
   const id = useParams<{ id: string }>().id;
-  const riddle = appCtx.riddles.find((riddle) => riddle.id === id);
-  const Component = riddle?.component;
-
+  const riddleWithCompnent = defaultRiddles.find((riddle) => riddle.id === id);
+  const Component = riddleWithCompnent?.component;
   return (
     <IonPage>
       <IonHeader collapse="condense">
         <IonToolbar color={'primary'}>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="" text="Back" />
+            <IonBackButton defaultHref="/" text="Back" />
           </IonButtons>
           <IonTitle>Beeware</IonTitle>
         </IonToolbar>
       </IonHeader>
-      {Component && riddle ? <Component riddle={riddle} /> : 'Rien ici'}
+      {Component && riddleWithCompnent ? <Component riddle={riddleWithCompnent} /> : 'Rien ici'}
     </IonPage>
   );
 };

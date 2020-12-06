@@ -19,7 +19,7 @@ const Home: React.FC = () => {
     const appCtx = useContext(AppContext);
     let timeRiddle = 0
     const [profileBase64, setProfileBase64] = useState<string>();
-    
+
     const updateBase64 = async () => {
         if (!appCtx.profile.picture) return
         const file = await Filesystem.readFile({
@@ -30,14 +30,13 @@ const Home: React.FC = () => {
     }
 
     useEffect(() => {
-        appCtx.initContext();
         updateBase64()
     }, [appCtx.profile.picture])
 
     appCtx.riddles.map((riddle: Riddle) => {
-        timeRiddle += riddle.timeSec 
+        timeRiddle += riddle.timeSec
     })
-    
+
     return (
         <IonPage>
             <IonHeader collapse="condense">

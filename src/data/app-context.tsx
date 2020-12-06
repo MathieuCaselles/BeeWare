@@ -8,16 +8,14 @@ interface AppContext {
   updateRiddle: (updatedRiddle: Riddle) => void;
   profile: Profile;
   updateProfile: (updatedProfile: Profile) => void;
-  updatePosition: (updatedPosition: GeolocationPosition) => void;
 }
 
 const AppContext = React.createContext<AppContext>({
-  initContext: () => {},
+  initContext: () => { },
   riddles: defaultRiddles,
-  updateRiddle: () => {},
+  updateRiddle: () => { },
   profile: defaultProfile,
-  updateProfile: () => {},
-  updatePosition: () => {},
+  updateProfile: () => { }
 });
 
 export default AppContext;
