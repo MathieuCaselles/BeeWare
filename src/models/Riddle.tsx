@@ -1,6 +1,5 @@
 import Background from '../pages/riddles/Background ';
 import TreasureHunt from '../pages/riddles/TreasureHunt';
-import bgImage from '../../public/assets/images/background.jpg'
 export interface Riddle {
   id: string;
   image: string;

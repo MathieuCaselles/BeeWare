@@ -44,7 +44,9 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
     let updateRiddle = { ...props.riddle };
     updateRiddle.isSuccess = true;
     updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
+    console.log("yolo")
     appCtx.updateRiddle(updateRiddle);
+    App.removeAllListeners();
     history.replace("/")
   };
 

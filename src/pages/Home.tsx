@@ -30,7 +30,6 @@ const Home: React.FC = () => {
     }
 
     useEffect(() => {
-        appCtx.initContext();
         updateBase64()
     }, [appCtx.profile.picture])
 
