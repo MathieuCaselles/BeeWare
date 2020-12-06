@@ -15,7 +15,7 @@ const AppContext = React.createContext<AppContext>({
   riddles: defaultRiddles,
   updateRiddle: () => { },
   profile: defaultProfile,
-  updateProfile: () => { },
+  updateProfile: () => { }
 });
 
 export default AppContext;

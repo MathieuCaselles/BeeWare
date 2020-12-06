@@ -47,7 +47,6 @@ const AppContextProvider: React.FC = (props) => {
     const storedRiddles = riddlesData.value
       ? JSON.parse(riddlesData.value)
       : defaultRiddles;
-    didMountRef.current = false;
     setProfile(storedProfile);
     setRiddles(storedRiddles);
   };
