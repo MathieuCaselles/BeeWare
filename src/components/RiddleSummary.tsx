@@ -8,7 +8,7 @@ const RiddleComponent: React.FC<{ riddle: Riddle }> = (props) => {
 
 
     return (
-        <IonCard button={true} color={props.riddle.isSuccess ? 'primary' : 'secondary'} routerLink={`${props.riddle.path}/${props.riddle.id}`}>
+        <IonCard button={true} color={props.riddle.isSuccess ? 'primary' : 'secondary'} routerLink={`riddle/${props.riddle.id}`}>
             <IonCardHeader>
                 <IonImg src={props.riddle.image} />
                 <IonCardSubtitle>{props.riddle.name}</IonCardSubtitle>

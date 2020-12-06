@@ -2,7 +2,7 @@ import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import React, { useContext } from 'react';
 import AppContext from '../data/app-context';
 import { Riddle } from '../models/Riddle';
-import { RiddleComponent } from './Riddle'
+import { RiddleComponent } from './RiddleSummary'
 
 
 
