@@ -1,5 +1,7 @@
 import Background from '../pages/riddles/Background ';
 import TreasureHunt from '../pages/riddles/TreasureHunt';
+import Clipboard from '../pages/riddles/clipboard';
+
 export interface Riddle {
   id: string;
   image: string;
@@ -13,12 +15,11 @@ export interface Riddle {
 export const defaultRiddles: Riddle[] = [
   {
     id: '1',
-    image:
-      'https://jojo-app.fr/wp-content/uploads/2018/09/espace-optimise-appartement-meuble-paris.jpg',
+    image: 'https://cdn.pixabay.com/photo/2014/04/02/16/16/glue-306757_960_720.png',
     name: 'riddle-1',
     difficulty: 3,
     timeSec: 0,
-    isSuccess: true,
+    isSuccess: false,
     component: null,
   },
   {
@@ -50,4 +51,13 @@ export const defaultRiddles: Riddle[] = [
     isSuccess: false,
     component: TreasureHunt,
   },
+  {
+    id: '5',
+    image: 'https://cdn.pixabay.com/photo/2014/04/02/16/16/glue-306757_960_720.png',
+    name: 'Copy Pasta',
+    difficulty: 2,
+    timeSec: 0,
+    isSuccess: false,
+    component: Clipboard,
+  }
 ];

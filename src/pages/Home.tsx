@@ -18,6 +18,7 @@ const Home: React.FC = () => {
     }
     const appCtx = useContext(AppContext);
     let timeRiddle = 0
+    let riddleSuccess = 0
     const [profileBase64, setProfileBase64] = useState<string>();
 
     const updateBase64 = async () => {
@@ -34,9 +35,13 @@ const Home: React.FC = () => {
     }, [appCtx.profile.picture])
 
     appCtx.riddles.map((riddle: Riddle) => {
-        timeRiddle += riddle.timeSec
+        if(riddle.isSuccess){
+            riddleSuccess += 1
+        }
+        timeRiddle += riddle.timeSec 
     })
 
+    
     return (
         <IonPage>
             <IonHeader collapse="condense">
@@ -57,8 +62,8 @@ const Home: React.FC = () => {
                             <IonCol>
                                 <IonCardContent>
                                     <p>Temps total passé sur les épreuves: {timeRiddle} seconds</p>
-                                    <p>Énigmes complétés :  ??/{appCtx.riddles.length}</p>
-                                    <IonProgressBar type="indeterminate" />
+                                    <p>Énigmes complétés :  {riddleSuccess}/{appCtx.riddles.length}</p>
+                                    <IonProgressBar value={riddleSuccess/appCtx.riddles.length} />
                                 </IonCardContent>
                             </IonCol>
                         </IonRow>
