@@ -19,11 +19,11 @@ import { Riddle } from '../../models/Riddle';
 import { checkCode } from '../../utils/utils';
 import { Plugins, AppState } from '@capacitor/core';
 import { useHistory } from "react-router-dom";
-const { App } = Plugins;
 
 
 
 const Background: React.FC<{ riddle: Riddle }> = (props) => {
+  const { App } = Plugins;
   const appCtx = useContext(AppContext);
   const history = useHistory();
   const [timeStart] = useState(new Date())
@@ -44,7 +44,6 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
     let updateRiddle = { ...props.riddle };
     updateRiddle.isSuccess = true;
     updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
-    console.log("yolo")
     appCtx.updateRiddle(updateRiddle);
     App.removeAllListeners();
     history.replace("/")
@@ -52,41 +51,47 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
 
   return (
     <IonContent>
-      <IonCard>
-        <IonGrid>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonCardHeader>
-                <IonTitle>{props.riddle!.name}</IonTitle>
-              </IonCardHeader>
-            </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonCardHeader>
-                <IonImg src={props.riddle!.image} />
-              </IonCardHeader>
-            </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center">
-            <IonCol>
-              <IonList>
-                <IonItem>
-                  <IonInput
-                    className="ion-text-center"
-                    onIonChange={(event) =>
-                      setInputCode(event.detail.value || '')
-                    }
-                  ></IonInput>
-                  <IonButton color="primary" onClick={successfulRiddle}>
-                    Valider
+      <IonGrid>
+        <IonRow className="ion-justify-content-center">
+          <IonCol sizeMd="5">
+            <IonCard>
+              <IonGrid>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonCardHeader>
+                      <IonTitle>{props.riddle!.name}</IonTitle>
+                    </IonCardHeader>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonCardHeader>
+                      <IonImg src={props.riddle!.image} />
+                    </IonCardHeader>
+                  </IonCol>
+                </IonRow>
+                <IonRow className="ion-justify-content-center">
+                  <IonCol>
+                    <IonList>
+                      <IonItem>
+                        <IonInput
+                          className="ion-text-center"
+                          onIonChange={(event) =>
+                            setInputCode(event.detail.value || '')
+                          }
+                        ></IonInput>
+                        <IonButton color="primary" onClick={successfulRiddle}>
+                          Valider
                   </IonButton>
-                </IonItem>
-              </IonList>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </IonCard>
+                      </IonItem>
+                    </IonList>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
+            </IonCard>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
       {win &&
         <IonItem color="primary">
           <IonLabel className="ion-text-center">
