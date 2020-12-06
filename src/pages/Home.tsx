@@ -35,11 +35,6 @@ const Home: React.FC = () => {
     }, [appCtx.profile.picture])
 
     appCtx.riddles.map((riddle: Riddle) => {
-<<<<<<< HEAD
-        timeRiddle += riddle.timeSec
-    })
-
-=======
         if(riddle.isSuccess){
             riddleSuccess += 1
         }
@@ -47,7 +42,6 @@ const Home: React.FC = () => {
     })
 
     
->>>>>>> 104f9b7... rebase develop
     return (
         <IonPage>
             <IonHeader collapse="condense">
