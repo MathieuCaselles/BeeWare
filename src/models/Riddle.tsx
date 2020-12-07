@@ -69,7 +69,7 @@ export const defaultRiddles: Riddle[] = [
     image:
       'https://media.istockphoto.com/illustrations/childrens-multicolored-alphabet-abc-illustration-id1136738832',
     name: 'Alphabet',
-    difficulty: 3,
+    difficulty: 5,
     timeSec: 0,
     isSuccess: false,
     component: Alphabet,
