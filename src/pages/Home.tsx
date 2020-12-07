@@ -71,7 +71,7 @@ const Home: React.FC = () => {
                                         </IonCol>
                                         <IonCol>
                                             <IonCardContent>
-                                                <p>Temps total passé sur les épreuves: {timeRiddle} seconds</p>
+                                                <p>Temps total passé sur les épreuves: {timeRiddle.toFixed(2)} seconds</p>
                                                 <p>Énigmes complétés :  {nbrRiddlesSuccess}/{nbrRiddles}</p>
                                                 <IonProgressBar value={riddleSuccess/nbrRiddles} />
                                             </IonCardContent>

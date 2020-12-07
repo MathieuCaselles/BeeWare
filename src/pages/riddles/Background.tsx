@@ -13,7 +13,7 @@ import {
   IonRow,
   IonTitle,
 } from '@ionic/react';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../../data/app-context';
 import { Riddle } from '../../models/Riddle';
 import { checkCode } from '../../utils/utils';
@@ -28,16 +28,17 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
   const history = useHistory();
   const [timeStart] = useState(new Date())
   const [inputCode, setInputCode] = useState('');
-  const [isUp, setIsUp] = useState(false);
   const [win, setWin] = useState(false)
 
-  if (!isUp) {
-    setIsUp(true);
+  useEffect(() => {
     App.addListener('appStateChange', (state: AppState) => {
       if (!state.isActive)
         setWin(true)
     });
-  }
+    return function cleanup() {
+      App.removeAllListeners();
+    };
+  });
 
   const successfulRiddle = () => {
     if (!props.riddle || !checkCode('LockSucceSS', inputCode)) return;
@@ -45,7 +46,6 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
     updateRiddle.isSuccess = true;
     updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
     appCtx.updateRiddle(updateRiddle);
-    App.removeAllListeners();
     history.replace("/")
   };
 

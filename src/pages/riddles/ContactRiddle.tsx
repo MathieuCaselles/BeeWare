@@ -13,36 +13,40 @@ const ContactRiddle: React.FC<{ riddle: Riddle }> = (props) => {
   const appCtx = useContext(AppContext);
   const [timeStart] = useState(new Date())
   const history = useHistory();
-    
-    const saveContact = async () => {
-      let contacts = new Contacts() 
-      let contact = contacts.create()
-      
 
-      contact.name = new ContactName(undefined, "Ware", "Bee")
-      contact.phoneNumbers = [new ContactField("mobile", "8647291483")]
-      try {
-        await contacts.find(["*"], undefined,)
-      } catch (error) {
-        console.log(error)
-      }
-      await contact.save().then(
-          () => console.log('Contact saved'),
-          (error: Error) => console.log(error.message)
-      )
+  const saveContact = async () => {
+    let contacts = new Contacts()
+    let contact = contacts.create()
+
+
+    contact.name = new ContactName(undefined, "Ware", "Bee")
+    contact.phoneNumbers = [new ContactField("mobile", "8647291483")]
+    try {
+      await contacts.find(["*"], undefined,)
+    } catch (error) {
+      console.log(error)
     }
-    const successfulRiddle = () => {
-      if (!props.riddle || !checkCode('8647291483', inputCode)) return;
-      let updateRiddle = { ...props.riddle };
-      updateRiddle.isSuccess = true;
-      updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
-      appCtx.updateRiddle(updateRiddle);
-      history.replace("/")
-    };
+    try {
+      await contact.save().then(
+        () => console.log('Contact saved')
+      )
+    } catch (error) {
+      console.log(error.message)
+    }
+
+  }
+  const successfulRiddle = () => {
+    if (!props.riddle || !checkCode('8647291483', inputCode)) return;
+    let updateRiddle = { ...props.riddle };
+    updateRiddle.isSuccess = true;
+    updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
+    appCtx.updateRiddle(updateRiddle);
+    history.replace("/")
+  };
 
   return (
-      <IonContent fullscreen>
-        <IonCard>
+    <IonContent fullscreen>
+      <IonCard>
         <IonGrid>
           <IonRow className="ion-justify-content-center">
             <IonCol>
@@ -53,7 +57,7 @@ const ContactRiddle: React.FC<{ riddle: Riddle }> = (props) => {
           </IonRow>
           <IonRow className="ion-justify-content-center">
             <IonCol>
-            <IonButton onClick={saveContact}>Start riddle</IonButton>
+              <IonButton onClick={saveContact}>Start riddle</IonButton>
               <IonCardHeader>
                 <IonImg src={props.riddle!.image} />
               </IonCardHeader>
@@ -78,7 +82,7 @@ const ContactRiddle: React.FC<{ riddle: Riddle }> = (props) => {
           </IonRow>
         </IonGrid>
       </IonCard>
-      </IonContent>
+    </IonContent>
   );
 };
 
