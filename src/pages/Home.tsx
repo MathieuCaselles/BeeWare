@@ -60,13 +60,6 @@ const Home: React.FC = () => {
     updateBase64();
   }, [appCtx.profile.picture]);
 
-  appCtx.riddles.map((riddle: Riddle) => {
-    if (riddle.isSuccess) {
-      riddleSuccess += 1;
-    }
-    timeRiddle += riddle.timeSec;
-  });
-
   return (
     <IonPage>
       <IonHeader>

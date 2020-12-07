@@ -36,6 +36,7 @@ const TreasureHunt: React.FC<{ riddle: Riddle }> = (props) => {
     undefined
   );
   const [win, setWin] = useState(false);
+  const [timeStart] = useState(new Date());
 
   const successfulRiddle = () => {
     if (!props.riddle || !checkCode('Tre4surE', inputCode)) return;
@@ -69,8 +70,6 @@ const TreasureHunt: React.FC<{ riddle: Riddle }> = (props) => {
   };
 
   getLocation();
-
-  const timeStart = new Date();
 
   if (
     !win &&
