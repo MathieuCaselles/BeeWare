@@ -1,3 +1,4 @@
+import { GeolocationPosition } from '@capacitor/core';
 import { Geolocation } from '@capacitor/core/dist/esm/web/geolocation';
 import {
   IonButton,
@@ -6,80 +7,138 @@ import {
   IonContent,
   IonGrid,
   IonIcon,
+  IonInput,
+  IonItem,
   IonLabel,
   IonRow,
 } from '@ionic/react';
-import { save } from 'ionicons/icons';
-import React, { useContext, useEffect, useState } from 'react';
+import { apertureOutline, navigateCircleOutline } from 'ionicons/icons';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../../data/app-context';
+import { Riddle } from '../../models/Riddle';
 import { checkCode } from '../../utils/utils';
 
-const TreasureHunt: React.FC = () => {
+interface Position {
+  latitude: number;
+  longitude: number;
+}
+
+const TreasureHunt: React.FC<{ riddle: Riddle }> = (props) => {
+  const appCtx = useContext(AppContext);
+  const history = useHistory();
+
+  const [inputCode, setInputCode] = useState('');
+  const [userPosition, setUserPosition] = useState<Position | undefined>(
+    undefined
+  );
+  const [startPosition, setStartPosition] = useState<Position | undefined>(
+    undefined
+  );
+  const [win, setWin] = useState(false);
+
+  const successfulRiddle = () => {
+    if (!props.riddle || !checkCode('Tre4surE', inputCode)) return;
+    let updateRiddle = { ...props.riddle };
+    updateRiddle.isSuccess = true;
+    updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
+    appCtx.updateRiddle(updateRiddle);
+    history.replace('/');
+  };
+
   const getLocation = async () => {
     try {
-      position = await Geolocation.getCurrentPosition();
-      console.log('position: ', position);
-      const currentPosition = position;
+      const position = await Geolocation.getCurrentPosition();
+      setUserPosition({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+      if (!startPosition) {
+        setStartPosition(userPosition);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-  // const successfulRiddle = () => {
-  //   if (!props.riddle || !checkCode('LockSucceSS', inputCode)) return;
-  //   let updateRiddle = { ...props.riddle };
-  //   updateRiddle.isSuccess = true;
-  //   updateRiddle.timeSec = (new Date().getTime() - timeStart.getTime()) / 1000;
-  //   appCtx.updateRiddle(updateRiddle);
-  // };
-
-  const appCtx = useContext(AppContext);
-  let position;
+  const cheat = () => {
+    setUserPosition({
+      latitude: 50,
+      longitude: 3,
+    });
+  };
 
   getLocation();
 
   const timeStart = new Date();
-  const [inputCode, setInputCode] = useState('');
 
-  let userPosition = 0;
-  const startPosition = 0;
+  if (
+    !win &&
+    userPosition &&
+    startPosition &&
+    (userPosition.latitude !== startPosition.latitude ||
+      userPosition.longitude !== startPosition.longitude)
+  ) {
+    setWin(true);
+  }
 
-  console.log('userPosition: ', userPosition);
-  /*
-    useEffect(() => {
-      userPosition.coords = appCtx.profile.position.coords;
-    }, [position]);
-  */
   return (
     <IonContent fullscreen>
       <IonGrid>
-        <IonRow>
-          <IonCard>
-            <p>Cette zone changera en fonction de l'énigme. Chasse au trésor</p>
-          </IonCard>
-        </IonRow>
-        <IonRow>
+        <IonRow className="ion-justify-content-center">
           <IonCol>
-            <IonCard>
-              <p>Position de départ :</p>
-            </IonCard>
+            <p>Position de départ :</p>
+            {startPosition ? (
+              <p>
+                {startPosition.latitude} - {startPosition.longitude}
+              </p>
+            ) : (
+              <p>Pas de coordonnées</p>
+            )}
           </IonCol>
 
           <IonCol>
-            <IonCard>
-              <p>Position actuelle :</p>
-            </IonCard>
+            <p>Position actuelle :</p>
+            {userPosition ? (
+              <p>
+                {userPosition.latitude} - {userPosition.longitude}
+              </p>
+            ) : (
+              <p>Pas de coordonnées</p>
+            )}
           </IonCol>
         </IonRow>
-        <IonRow>
-          <IonCol size="1" offset="4">
-            <IonButton mode="ios" fill="outline" onClick={() => getLocation()}>
-              <IonIcon icon={save} />
+        <IonRow className="ion-justify-content-center">
+          <IonCol>
+            <IonButton mode="ios" fill="outline" onClick={getLocation}>
+              <IonIcon icon={navigateCircleOutline} />
               <IonLabel>getLocation</IonLabel>
             </IonButton>
           </IonCol>
+          <IonCol>
+            <IonButton mode="ios" fill="outline" onClick={cheat}>
+              <IonIcon icon={apertureOutline} />
+              <IonLabel>cheat</IonLabel>
+            </IonButton>
+          </IonCol>
+        </IonRow>
+        <IonRow className="ion-justify-content-center">
+          <IonItem>
+            <IonInput
+              className="ion-text-center"
+              onIonChange={(event) => setInputCode(event.detail.value || '')}
+            ></IonInput>
+            <IonButton color="primary" onClick={successfulRiddle}>
+              Valider
+            </IonButton>
+          </IonItem>
         </IonRow>
       </IonGrid>
+      {win && (
+        <IonItem color="primary">
+          <IonLabel className="ion-text-center">Le code est: Tre4surE</IonLabel>
+        </IonItem>
+      )}
     </IonContent>
   );
 };
