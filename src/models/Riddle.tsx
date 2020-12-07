@@ -49,7 +49,7 @@ export const defaultRiddles: Riddle[] = [
     id: '4',
     image:
       'https://www.thespruce.com/thmb/d97ouPVGIw0T655cMAhEVeWeLM4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/indoor-treasure-hunt-for-children-1695332_FINAL-a9fabbdd08a14bfcbf9acb8ecae3a2f3.png',
-    name: 'treasure-hunt',
+    name: 'Treasure Hunt',
     difficulty: 1,
     timeSec: 0,
     isSuccess: false,
@@ -57,7 +57,8 @@ export const defaultRiddles: Riddle[] = [
   },
   {
     id: '5',
-    image: 'https://cdn.pixabay.com/photo/2014/04/02/16/16/glue-306757_960_720.png',
+    image:
+      'https://cdn.pixabay.com/photo/2014/04/02/16/16/glue-306757_960_720.png',
     name: 'Copy Pasta',
     difficulty: 2,
     timeSec: 0,
@@ -73,6 +74,5 @@ export const defaultRiddles: Riddle[] = [
     timeSec: 0,
     isSuccess: false,
     component: Alphabet,
-  }
-
+  },
 ];

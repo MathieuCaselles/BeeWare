@@ -86,11 +86,6 @@ const TreasureHunt: React.FC<{ riddle: Riddle }> = (props) => {
     <IonContent fullscreen>
       <IonGrid>
         <IonRow className="ion-justify-content-center">
-          <IonCard>
-            <p>Cette zone changera en fonction de l'énigme. Chasse au trésor</p>
-          </IonCard>
-        </IonRow>
-        <IonRow className="ion-justify-content-center">
           <IonCol>
             <p>Position de départ :</p>
             {startPosition ? (
@@ -114,15 +109,13 @@ const TreasureHunt: React.FC<{ riddle: Riddle }> = (props) => {
           </IonCol>
         </IonRow>
         <IonRow className="ion-justify-content-center">
-          <IonCol size="1">
+          <IonCol>
             <IonButton mode="ios" fill="outline" onClick={getLocation}>
               <IonIcon icon={navigateCircleOutline} />
               <IonLabel>getLocation</IonLabel>
             </IonButton>
           </IonCol>
-        </IonRow>
-        <IonRow className="ion-justify-content-center">
-          <IonCol size="1">
+          <IonCol>
             <IonButton mode="ios" fill="outline" onClick={cheat}>
               <IonIcon icon={apertureOutline} />
               <IonLabel>cheat</IonLabel>
