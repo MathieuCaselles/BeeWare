@@ -41,7 +41,7 @@ export const defaultRiddles: Riddle[] = [
     image: 'https://zupimages.net/up/20/49/vpcw.jpg',
     name: 'Background',
     difficulty: 3,
-    timeSec: 1,
+    timeSec: 0,
     isSuccess: false,
     component: Background,
   },
