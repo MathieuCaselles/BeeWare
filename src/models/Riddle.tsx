@@ -1,5 +1,5 @@
 import Alphabet from '../pages/riddles/Alphabet';
-import Background from '../pages/riddles/Background ';
+import Background from '../pages/riddles/Background';
 import TreasureHunt from '../pages/riddles/TreasureHunt';
 import Clipboard from '../pages/riddles/clipboard';
 import Light from '../pages/riddles/Light';
