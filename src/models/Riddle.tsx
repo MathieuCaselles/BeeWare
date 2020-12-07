@@ -1,3 +1,4 @@
+import Alphabet from '../pages/riddles/Alphabet';
 import Background from '../pages/riddles/Background';
 import TreasureHunt from '../pages/riddles/TreasureHunt';
 import Clipboard from '../pages/riddles/clipboard';
@@ -62,5 +63,16 @@ export const defaultRiddles: Riddle[] = [
     timeSec: 0,
     isSuccess: false,
     component: Clipboard,
+  },
+  {
+    id: '6',
+    image:
+      'https://media.istockphoto.com/illustrations/childrens-multicolored-alphabet-abc-illustration-id1136738832',
+    name: 'Alphabet',
+    difficulty: 3,
+    timeSec: 0,
+    isSuccess: false,
+    component: Alphabet,
   }
+
 ];
