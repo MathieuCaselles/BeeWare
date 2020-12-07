@@ -32,7 +32,6 @@ const Background: React.FC<{ riddle: Riddle }> = (props) => {
 
   useEffect(() => {
     App.addListener('appStateChange', (state: AppState) => {
-      console.log(state.isActive)
       if (!state.isActive)
         setWin(true)
     });
